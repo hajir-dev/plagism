@@ -9,7 +9,7 @@ import TermOfService from "./_components/TOS";
 export default function Home() {
   return (
     <RecoilRootWrapper>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main className="flex min-h-screen flex-col items-center justify-between p-4 lg:p-24">
         <div className="max-w-5xl w-full font-mono text-sm">
           <div className="mb-4">
             <Title />
