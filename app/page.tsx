@@ -15,7 +15,7 @@ export default function Home() {
             <Title />
           </div>
           {/* <Credit /> */}
-          <div className="flex-1">
+          <div>
             <TextArea />
             <TermOfService />
             <div className="mt-6">

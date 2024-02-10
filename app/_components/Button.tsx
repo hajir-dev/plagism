@@ -31,7 +31,7 @@ const Button = () => {
     <button
       disabled={!isAcceptTOS}
       onClick={handleSubmit}
-      className="border w-full py-4 rounded-lg  duration-300 border-gray-300 hover:shadow disabled:opacity-10"
+      className="border w-full py-4 rounded-lg  duration-300 border-gray-300 hover:shadow disabled:opacity-10 dark:hover:shadow-white dark:focus:shadow-white"
     >
       Generate
     </button>
