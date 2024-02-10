@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Plagism",
-  description: "Plagiarism Free",
+  title: "Plagism by hajir.dev",
+  description: "Transforming Texts, Evading Plagiarism Checks!",
 };
 
 export default function RootLayout({
