@@ -10,12 +10,14 @@ const TermOfService = () => {
   return (
     <div className=" my-4">
       <input
+        name="tos"
         type="checkbox"
         checked={isAcceptTOS}
         onChange={() => setIsAcceptTOS(!isAcceptTOS)}
         className="outline-none"
+        title="Accept TOS"
       />
-      <span>
+      <label htmlFor="tos">
         {" "}
         I acknowledge and accept the associated risks.{" "}
         <span
@@ -24,7 +26,7 @@ const TermOfService = () => {
         >
           {showTOS ? "Close" : "Show TOS"}
         </span>
-      </span>
+      </label>
       {showTOS && (
         <p className="text-red-400 font-semibold">
           This project is designed for educational purposes to explore

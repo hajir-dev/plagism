@@ -1,5 +1,4 @@
 import Button from "./_components/Button";
-// import Credit from "./_components/Credit";
 import Result from "./_components/Result";
 import TextArea from "./_components/TextArea";
 import RecoilRootWrapper from "./_components/RecoilRootWrapper";
@@ -17,7 +16,6 @@ export default function Home() {
           <div className="mb-4">
             <Title />
           </div>
-          {/* <Credit /> */}
           <div>
             <TextArea />
             <TermOfService />

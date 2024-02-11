@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
+import { db } from "@vercel/postgres";
 
 function getCurrentTime(): string {
   return new Date().toISOString();
@@ -8,28 +8,15 @@ function convertText(text: string): string {
   return text.replace(/i/g, "і").replace(/o/g, "о");
 }
 
-function saveDataToFile(text: string): void {
+export async function saveDataToDatabase(text: string): Promise<void> {
   const currentTime = getCurrentTime();
 
-  const filePath = "data/posted_data.json";
-  let existingData = [];
-  if (existsSync(filePath)) {
-    const jsonData = readFileSync(filePath, "utf8");
-    existingData = JSON.parse(jsonData);
-  }
+  const query = `
+    INSERT INTO posted_data (original_text, submitted_at)
+    VALUES ($1, $2)
+  `;
 
-  const newData = { originalText: text, submittedAt: currentTime };
-  existingData.push(newData);
-
-  // Pastikan direktori 'data' ada
-  const dataDir = "data";
-  if (!existsSync(dataDir)) {
-    mkdirSync(dataDir);
-  }
-
-  // Simpan seluruh data ke dalam file .json
-  const jsonData = JSON.stringify(existingData);
-  writeFileSync(filePath, jsonData);
+  await db.query(query, [text, currentTime]);
 }
 
 export async function POST(request: Request) {
@@ -40,8 +27,8 @@ export async function POST(request: Request) {
     // Lakukan penggantian huruf
     const convertedText = convertText(text);
 
-    // Simpan data ke dalam file .json
-    saveDataToFile(text);
+    // Simpan data ke dalam database PostgreSQL
+    await saveDataToDatabase(text);
 
     return new Response(JSON.stringify({ result: convertedText }), {
       headers: {
