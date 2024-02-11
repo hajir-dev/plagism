@@ -1,12 +1,13 @@
 "use client";
 
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { acceptTOSState, convertedTextState } from "../_store/store";
+import { acceptTOSState, convertedTextState, textState } from "../_store/store";
 import { convertText } from "../_services/convert";
 import { toast, ToastOptions } from "react-toastify";
 
 const Button = () => {
   const setConvertedText = useSetRecoilState(convertedTextState);
+  const text = useRecoilValue(textState);
   const isAcceptTOS = useRecoilValue(acceptTOSState);
 
   const toastOptions: ToastOptions = {
@@ -20,7 +21,7 @@ const Button = () => {
   };
 
   const handleSubmit = () => {
-    convertText()
+    convertText(text)
       .then((response: { result: string | ((currVal: string) => string) }) => {
         setConvertedText(response.result);
         toast.success("Conversion Complete", toastOptions);
