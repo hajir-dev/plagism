@@ -47,7 +47,7 @@ export async function POST(request: Request) {
       headers: {
         "Content-Type": "application/json",
       },
-      status: 201,
+      status: 200,
     });
   } catch (error) {
     console.error(error);
