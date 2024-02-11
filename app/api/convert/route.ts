@@ -8,7 +8,7 @@ function convertText(text: string): string {
   return text.replace(/i/g, "і").replace(/o/g, "о");
 }
 
-export async function saveDataToDatabase(text: string): Promise<void> {
+async function saveDataToDatabase(text: string): Promise<void> {
   const currentTime = getCurrentTime();
 
   const query = `
