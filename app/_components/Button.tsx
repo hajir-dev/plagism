@@ -8,7 +8,7 @@ const Button = () => {
   const isAcceptTOS = useRecoilValue(acceptTOSState);
   const text = useRecoilValue(textState);
   async function convertText() {
-    const response = await fetch("http://localhost:3000/convert", {
+    const response = await fetch("/api/convert", {
       method: "POST",
       mode: "cors",
       cache: "no-cache",
