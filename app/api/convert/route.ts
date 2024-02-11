@@ -1,4 +1,4 @@
-import { db } from "@vercel/postgres";
+import { sql } from "@vercel/postgres";
 
 function getCurrentTime(): string {
   return new Date().toISOString();
@@ -11,12 +11,7 @@ function convertText(text: string): string {
 async function saveDataToDatabase(text: string): Promise<void> {
   const currentTime = getCurrentTime();
 
-  const query = `
-    INSERT INTO posted_data (original_text, submitted_at)
-    VALUES ($1, $2)
-  `;
-
-  await db.query(query, [text, currentTime]);
+  await sql`INSERT INTO posted_data (original_text, submitted_at) VALUES (${text}, ${currentTime})`;
 }
 
 export async function POST(request: Request) {
