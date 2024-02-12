@@ -52,7 +52,3 @@ Plagism stands out from other plagiarism detection tools due to its:
 
 ![Screenshot 1](image-1.png)
 ![Screenshot 2](image-2.png)
-
-## Video Demo 📹
-
-[![Video Demo](https://img.youtube.com/vi/your-video-id/0.jpg)](https://www.youtube.com/watch?v=your-video-id)
